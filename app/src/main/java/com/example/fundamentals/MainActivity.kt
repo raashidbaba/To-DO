@@ -20,10 +20,8 @@ class MainActivity : AppCompatActivity() {
 
 
         var myList = mutableListOf(
-            Todo("complete java", false),
-            Todo("feed the cat", true),
-            Todo("join the meeting", false),
-            Todo("complete assignments", false)
+            Todo("", false)
+
         )
         var adapter = todoAdapter(myList)
         val myrecylerView = findViewById<RecyclerView>(R.id.rvTodo)
