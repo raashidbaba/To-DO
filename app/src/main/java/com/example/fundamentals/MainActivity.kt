@@ -32,10 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         val myEditText = findViewById<EditText>(R.id.editText)
         val myButton = findViewById<Button>(R.id.myAddButton)
+       // val myCheckBox = findViewById<CheckBox>(R.id.checkBox)
         myButton.setOnClickListener {
             val newTitle = myEditText.text.toString()
             val toDO = Todo(newTitle,false)
-            if ( newTitle.isEmpty()  && !toDO.isChecked){
+            if ( newTitle.isEmpty()){
                 Toast.makeText(this, "please add something", Toast.LENGTH_SHORT).show()
             }
             myList.add(toDO)

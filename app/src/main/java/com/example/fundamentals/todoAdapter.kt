@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 
 class todoAdapter(var todo: List<Todo>) : RecyclerView.Adapter<todoAdapter.todoHolder>() {
-    interface OnCheckboxChangedListener {
+
+  /*  interface OnCheckboxChangedListener {
         fun onCheckboxChanged(position: Int, isChecked: Boolean)
-    }
+    }*/
     
     inner class todoHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
