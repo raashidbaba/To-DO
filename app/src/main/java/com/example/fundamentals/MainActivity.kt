@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
         var myList = mutableListOf(
-            Todo("", false)
-
+            Todo("feed the cat", true),
+            Todo("join the meeting", false),
+            Todo("complete assignments", false)
         )
         var adapter = todoAdapter(myList)
         val myrecylerView = findViewById<RecyclerView>(R.id.rvTodo)
@@ -30,18 +30,18 @@ class MainActivity : AppCompatActivity() {
 
         val myEditText = findViewById<EditText>(R.id.editText)
         val myButton = findViewById<Button>(R.id.myAddButton)
-       // val myCheckBox = findViewById<CheckBox>(R.id.checkBox)
         myButton.setOnClickListener {
             val newTitle = myEditText.text.toString()
-            val toDO = Todo(newTitle,false)
-            if ( newTitle.isEmpty()){
-                Toast.makeText(this, "please add something", Toast.LENGTH_SHORT).show()
+            val toDO = Todo(newTitle, false)
+            val checkboxText = findViewById<CheckBox>(R.id.checkBox)
+            if (newTitle.isEmpty() ) {
+              //  checkboxText.visibility =View.INVISIBLE
+                Toast.makeText(this, "please add a TO-DO", Toast.LENGTH_SHORT).show()
             }
             myList.add(toDO)
-            adapter.notifyItemChanged(myList.size-1)
+            adapter.notifyItemChanged(myList.size - 1)
             myEditText.text.clear()
         }
-
 
 
     }

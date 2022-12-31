@@ -1,6 +1,7 @@
 package com.example.fundamentals
 
 import android.content.Intent
+import android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,14 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 
-class todoAdapter(var todo: List<Todo>) : RecyclerView.Adapter<todoAdapter.todoHolder>() {
+class todoAdapter(var todo: MutableList<Todo>) : RecyclerView.Adapter<todoAdapter.todoHolder>() {
 
-  /*  interface OnCheckboxChangedListener {
-        fun onCheckboxChanged(position: Int, isChecked: Boolean)
-    }*/
-    
+
     inner class todoHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): todoHolder {
@@ -30,7 +27,9 @@ class todoAdapter(var todo: List<Todo>) : RecyclerView.Adapter<todoAdapter.todoH
             val titleText = findViewById<TextView>(R.id.tvTitle)
             val checkboxText = findViewById<CheckBox>(R.id.checkBox)
             titleText.text = todo[position].title
-            checkboxText.isChecked = todo[position].isChecked
+            checkboxText.isChecked = todo[position].isCheckedBox
+            toggleThrough(titleText, checkboxText.isChecked)
+
 
         }
     }
@@ -39,6 +38,14 @@ class todoAdapter(var todo: List<Todo>) : RecyclerView.Adapter<todoAdapter.todoH
         return todo.size
 
 
+    }
+
+    private fun toggleThrough(titleText: TextView, isCheckedStatus: Boolean) {
+        if (isCheckedStatus) {
+            titleText.paintFlags = titleText.paintFlags or STRIKE_THRU_TEXT_FLAG
+        } else {
+            titleText.paintFlags = titleText.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
+        }
     }
 
 }
