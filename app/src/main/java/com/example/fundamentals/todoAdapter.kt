@@ -21,14 +21,28 @@ class todoAdapter(var todo: MutableList<Todo>) : RecyclerView.Adapter<todoAdapte
         val view = LayoutInflater.from(parent.context).inflate(R.layout.items, parent, false)
         return todoHolder(view)
     }
-
+    fun deleteTodo(){
+        todo.removeAll() { todo ->
+            todo.isCheckedBox
+        }
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: todoHolder, position: Int) {
+        val curTodo = todo[position]
         holder.itemView.apply {
             val titleText = findViewById<TextView>(R.id.tvTitle)
             val checkboxText = findViewById<CheckBox>(R.id.checkBox)
             titleText.text = todo[position].title
+           if (titleText.text.isNullOrEmpty()){
+               checkboxText.visibility = View.INVISIBLE
+           }
             checkboxText.isChecked = todo[position].isCheckedBox
             toggleThrough(titleText, checkboxText.isChecked)
+            checkboxText.setOnCheckedChangeListener { _, isCheckedcv ->
+                toggleThrough(titleText,isCheckedcv)
+                curTodo.isCheckedBox = !curTodo.isCheckedBox
+
+            }
 
 
         }
@@ -47,6 +61,7 @@ class todoAdapter(var todo: MutableList<Todo>) : RecyclerView.Adapter<todoAdapte
             titleText.paintFlags = titleText.paintFlags and STRIKE_THRU_TEXT_FLAG.inv()
         }
     }
+
 
 }
 

@@ -18,22 +18,33 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/editText"
-        android:layout_width="240dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="add your todo here"
-        android:textColor="#000"
         android:maxLength="20"
+        android:textColor="#000"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/myAddButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/myAddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
+        android:layout_width="84dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="12dp"
         android:layout_marginBottom="4dp"
-        android:text="Add"
         android:backgroundTint="@color/black"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/myDeleteBtn" />
+
+    <Button
+        android:id="@+id/myDeleteBtn"
+        android:layout_width="94dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/black"
+        android:text="Deletesd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
