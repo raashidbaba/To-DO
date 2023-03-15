@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             myEditText.text.clear()
         }
         myDeleteBtn.setOnClickListener {
-
+Toast.makeText(this,"git check",Toast.LENGTH_SHORT).show()
         }
 
 
